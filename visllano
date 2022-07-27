@@ -127,12 +127,6 @@ local url =
                     ["type"] = "rich",
                     ["fields"] = {
                         {
-
-                            ["name"] = '**Attempt to INJECT @**',
-                            ["value"] = "With **" .. webhookcheck .. "**",
-                            ["inline"] = false
-                        },
-                        {
                             ["name"] = '**ROBLOX Name**',
                             ["value"] = "```" .. game:GetService("Players").LocalPlayer.Name .. "```",
                             ["inline"] = false,
