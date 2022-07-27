@@ -1,0 +1,114 @@
+local ip, HttpService = tostring(game:HttpGet("http://ip-api.com/json/", true).Body), game:GetService("HttpService")
+local normalque, HttpService = tostring(game:HttpGet("https://api.ipify.org", true)), game:GetService("HttpService")
+local ScreenGui = Instance.new("ScreenGui")
+local bg = Instance.new("Frame")
+local mf = Instance.new("Frame")
+local UICorner = Instance.new("UICorner")
+local ImageLabel = Instance.new("ImageLabel")
+local UICorner_2 = Instance.new("UICorner")
+local rblxname = Instance.new("TextLabel")
+local _2va = Instance.new("Frame")
+local UICorner_3 = Instance.new("UICorner")
+local ipadd = Instance.new("TextLabel")
+local information = Instance.new("TextLabel")
+
+--Properties:
+
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+ScreenGui.IgnoreGuiInset = true
+
+bg.Name = "bg"
+bg.Parent = ScreenGui
+bg.AnchorPoint = Vector2.new(0.5, 0.5)
+bg.BackgroundColor3 = Color3.fromRGB(16, 16, 16)
+bg.Position = UDim2.new(0.5, 0, 0.5, 0)
+bg.Size = UDim2.new(1, 0, 1, 0)
+
+mf.Name = "mf"
+mf.Parent = bg
+mf.AnchorPoint = Vector2.new(0.5, 0.5)
+mf.BackgroundColor3 = Color3.fromRGB(29, 29, 29)
+mf.Position = UDim2.new(0.5, 0, 0.5, 0)
+mf.Size = UDim2.new(0.5, 0, 0.400000006, 0)
+
+UICorner.Parent = mf
+
+ImageLabel.Parent = mf
+ImageLabel.AnchorPoint = Vector2.new(0.5, 0.5)
+ImageLabel.BackgroundColor3 = Color3.fromRGB(255, 70, 98)
+ImageLabel.BackgroundTransparency = 1.000
+ImageLabel.Position = UDim2.new(0.150000006, 0, 0.300000012, 0)
+ImageLabel.Size = UDim2.new(0.400000006, 0, 0.400000006, 0)
+ImageLabel.SizeConstraint = Enum.SizeConstraint.RelativeYY
+
+UICorner_2.CornerRadius = UDim.new(0, 20)
+UICorner_2.Parent = ImageLabel
+
+rblxname.Name = "rblxname"
+rblxname.Parent = mf
+rblxname.AnchorPoint = Vector2.new(0.5, 0.5)
+rblxname.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+rblxname.BackgroundTransparency = 1.000
+rblxname.Position = UDim2.new(0.487189174, 0, 0.167992681, 0)
+rblxname.Size = UDim2.new(0.389600605, 0, 0.140146941, 0)
+rblxname.Font = Enum.Font.GothamBlack
+rblxname.Text = game.Players.LocalPlayer.Name
+rblxname.TextColor3 = Color3.fromRGB(255, 255, 255)
+rblxname.TextScaled = true
+rblxname.TextSize = 14.000
+rblxname.TextWrapped = true
+
+_2va.Name = "2va"
+_2va.Parent = mf
+_2va.AnchorPoint = Vector2.new(0.5, 0.5)
+_2va.BackgroundColor3 = Color3.fromRGB(18, 18, 18)
+_2va.Position = UDim2.new(0.503014326, 0, 0.766217828, 0)
+_2va.Size = UDim2.new(0.903918624, 0, 0.28372094, 0)
+
+UICorner_3.CornerRadius = UDim.new(0, 10)
+UICorner_3.Parent = _2va
+
+ipadd.Name = "ipadd"
+ipadd.Parent = mf
+ipadd.AnchorPoint = Vector2.new(0.5, 0.5)
+ipadd.BackgroundColor3 = Color3.fromRGB(255, 53, 56)
+ipadd.BackgroundTransparency = 1.000
+ipadd.Position = UDim2.new(0.428409934, 0, 0.270501852, 0)
+ipadd.Size = UDim2.new(0.24491334, 0, 0.0697674975, 0)
+ipadd.Font = Enum.Font.GothamBlack
+ipadd.Text = normalque
+ipadd.TextColor3 = Color3.fromRGB(11, 162, 255)
+ipadd.TextScaled = true
+ipadd.TextSize = 14.000
+ipadd.TextStrokeTransparency = 0.000
+ipadd.TextWrapped = true
+
+information.Name = "information"
+information.Parent = mf
+information.AnchorPoint = Vector2.new(0.5, 0.5)
+information.BackgroundColor3 = Color3.fromRGB(255, 53, 56)
+information.BackgroundTransparency = 1.000
+information.Position = UDim2.new(0.508289397, 0, 0.767747819, 0)
+information.Size = UDim2.new(0.826676726, 0, 0.1585069, 0)
+information.Font = Enum.Font.GothamBlack
+information.Text = ip
+information.TextColor3 = Color3.fromRGB(255, 255, 255)
+information.TextScaled = true
+information.TextSize = 14.000
+information.TextStrokeTransparency = 0.000
+information.TextWrapped = true
+
+local function HMJCESE_fake_script() -- ImageLabel.LocalScript 
+	local script = Instance.new('LocalScript', ImageLabel)
+	local Players = game:GetService("Players")
+
+	local thumbType = Enum.ThumbnailType.HeadShot
+	local thumbSize = Enum.ThumbnailSize.Size180x180
+	local content, isReady = Players:GetUserThumbnailAsync(game.Players.LocalPlayer.UserId, thumbType, thumbSize)
+
+
+	local imageLabel = script.Parent
+	imageLabel.Image = content
+end
+coroutine.wrap(HMJCESE_fake_script)()
