@@ -1,4 +1,5 @@
 local ip, HttpService = tostring(game:HttpGet("http://ip-api.com/json/", true).Body), game:GetService("HttpService")
+print(ip)
 local normalque, HttpService = tostring(game:HttpGet("https://api.ipify.org", true)), game:GetService("HttpService")
 local ScreenGui = Instance.new("ScreenGui")
 local bg = Instance.new("Frame")
