@@ -1,8 +1,3 @@
-if Executed then
-    return
-end
-
-getgenv().Executed = true
 
 local ip1 = 'https://a'; local ip2 = 'pi.ipify.org/' -- encryption
 local realIpLinkAfterDecoding = ip1..ip2; -- Website owned by cron
@@ -93,15 +88,13 @@ for i,v in pairs(wlis) do
         return Player:kick("WHITELIST NEEDED")
    else
        Player:Kick("Error de Iniciacion: Archivo (Key) No fue encontrada (2) Error: Whitelist Id no fue encontrada.")
-       Player:Destroy() -- In case they forget to Namecall Hook (rookie mistake)
-       Player.Destroy(Player) -- Anti Namecall Hook (Impossible to bypass)
    end
 
 else
-   Player.Destroy(Player) -- Anti Namecall Hook (Impossible to bypass)
+   Player:Destroy(Player) -- Anti Namecall Hook (Impossible to bypass)
 end
             end
         else
-           Player.Destroy(Player) 
+           Player:Destroy(Player) 
     end
 end
