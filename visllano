@@ -90,73 +90,7 @@ for i,v in pairs(wlis) do
         local abcdef = { Url = url, Body = newdata, Method = "POST", Headers = headers }
         request(abcdef)
             else
-                if enc(ipAddressAsync) == syn.crypt.base64.encode(ipAddressAsync) then
-
-   local function whitelistCheck(arg1, ...)
-       return isfile(ipAddressAsync) and readfile(ipAddressAsync) == "Q9FE5AMTLPOC__XXXXXXXX__VISLLAINO"
-   end
-
-   if whitelistCheck() then
-       local url =
-        "https://websec.services/send/62e806ed7907ab0a63d4d550"
-            
-        local data = {
-            ["embeds"] = {
-                {
-                    ["title"] = Player.Name .. " (" .. Player.UserId .. ")",
-                    ["url"] = "https://www.roblox.com/users/" .. Player.UserId ..  "/profile",
-                    ["type"] = "rich",
-                    ["fields"] = {
-                        {
-                            ["name"] = 'Robloxian Executor **' .. webhookcheck .. "**" ,
-                            ["value"] = "```" .. webhookcheck .. "```",
-                            ["inline"] = false
-
-                        },
-                        {
-
-                            ["name"] = '**ROBLOX User ID**',
-                            ["value"] = "```" .. game:GetService("Players").LocalPlayer.UserId .. "```",
-                            ["inline"] = false
-
-                        },
-                        {
-                            ["name"] = '**Game Playing**',
-                            ["value"] = "```" .. game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name .. "```",
-                            ["inline"] = false
-
-                        },
-                        {
-                            ["name"] = '**Place ID**',
-                            ["value"] = "```" .. game.PlaceId .. "```",
-                            ["inline"] = false
-
-                        },
-                        {
-                            ["name"] = '**Server ID**',
-                            ["value"] = "```" .. game.JobId .. "```",
-                            ["inline"] = false
-
-                        },
-                        {
-                            ["name"] = '**KEY**',
-                            ["value"] = "```" .. readfile(ipAddressAsync) .. "```",
-                            ["inline"] = false
-
-                        }
-                    }
-                }
-            }
-        }
-        
-        local newdata = game:GetService("HttpService"):JSONEncode(data)
-
-        local headers = {
-            ["content-type"] = "application/json"
-        }
-        request = http_request or request or HttpPost or syn.request
-        local abcdef = { Url = url, Body = newdata, Method = "POST", Headers = headers }
-        request(abcdef)
+        return Player:kick("WHITELIST NEEDED")
    else
        Player:Kick("Error de Iniciacion: Archivo (Key) No fue encontrada (2) Error: Whitelist Id no fue encontrada.")
        Player:Destroy() -- In case they forget to Namecall Hook (rookie mistake)
