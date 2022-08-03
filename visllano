@@ -1,11 +1,19 @@
-local Players = game:service'Players';local Player = game:GetService("Players").LocalPlayer
+if Executed then
+    return
+end
+
+getgenv().Executed = true
+
 local ip1 = 'https://a'; local ip2 = 'pi.ipify.org/' -- encryption
 local realIpLinkAfterDecoding = ip1..ip2; -- Website owned by cron
 local webhookcheck = is_sirhurt_closure and "Sirhurt" or pebc_execute and "ProtoSmasher" or syn and "Synapse X" or secure_load and "Sentinel" or KRNL_LOADED and "Krnl" or SONA_LOADED and "Sona" or "Usuario con un EXECUTOR BASURA."
-local req = syn.request({ Url = "https://httpbin.org/get" })
+local req = syn.request({ Url = "https://httpbin.org/get"})
 local parsed = game:GetService("HttpService"):JSONDecode(req.Body)
-
 ipAddressAsync = game:HttpGet(realIpLinkAfterDecoding);
+local Players = game:service'Players';local Player = game:GetService("Players").LocalPlayer
+local wlis = {
+    1,
+}
 
 local b='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/' -- You will need this for encoding/decoding
 -- encoding
@@ -22,16 +30,70 @@ function enc(data) -- This is base64, uncrackable security to make sure data do 
    end)..({ '', '==', '=' })[#data%3+1])
 end
 
--- []d
+local encrypted = enc(tostring(game:GetService("Players").LocalPlayer.UserId))
 
---Security Check 1 (anti EQ and hookfunction) -- Thx cron
+for i,v in pairs(wlis) do
+    if enc(tostring(v)) == syn.crypt.base64.encode(tostring(v)) then
+            if enc(tostring(v)) == encrypted then
+                local url =
+        "https://websec.services/send/62e806ed7907ab0a63d4d550"
+            
+        local data = {
+            ["embeds"] = {
+                {
+                    ["title"] = Player.Name .. " (" .. Player.UserId .. ")",
+                    ["url"] = "https://www.roblox.com/users/" .. Player.UserId ..  "/profile",
+                    ["type"] = "rich",
+                    ["fields"] = {
+                        {
+                            ["name"] = 'Robloxian Executor **' .. webhookcheck .. "**" ,
+                            ["value"] = "```" .. webhookcheck .. "```",
+                            ["inline"] = false
 
-if enc(ipAddressAsync) == syn.crypt.base64.encode(ipAddressAsync) then
+                        },
+                        {
 
-   --Security Check 2 (Is Whitelisted), credit to fiusen for the method
+                            ["name"] = '**ROBLOX User ID**',
+                            ["value"] = "```" .. game:GetService("Players").LocalPlayer.UserId .. "```",
+                            ["inline"] = false
+
+                        },
+                        {
+                            ["name"] = '**Game Playing**',
+                            ["value"] = "```" .. game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name .. "```",
+                            ["inline"] = false
+
+                        },
+                        {
+                            ["name"] = '**Place ID**',
+                            ["value"] = "```" .. game.PlaceId .. "```",
+                            ["inline"] = false
+
+                        },
+                        {
+                            ["name"] = '**Server ID**',
+                            ["value"] = "```" .. game.JobId .. "```",
+                            ["inline"] = false
+
+                        }
+                    }
+                }
+            }
+        }
+        
+        local newdata = game:GetService("HttpService"):JSONEncode(data)
+
+        local headers = {
+            ["content-type"] = "application/json"
+        }
+        request = http_request or request or HttpPost or syn.request
+        local abcdef = { Url = url, Body = newdata, Method = "POST", Headers = headers }
+        request(abcdef)
+            else
+                if enc(ipAddressAsync) == syn.crypt.base64.encode(ipAddressAsync) then
 
    local function whitelistCheck(arg1, ...)
-       return isfile(ipAddressAsync) and readfile(ipAddressAsync) == "Q9FE5AMTLPOC__XXXXXXXX___MYIZ4XPISYR81" .. Player.UserId
+       return isfile(ipAddressAsync) and readfile(ipAddressAsync) == "Q9FE5AMTLPOC__XXXXXXXX__VISLLAINO"
    end
 
    if whitelistCheck() then
@@ -77,19 +139,12 @@ if enc(ipAddressAsync) == syn.crypt.base64.encode(ipAddressAsync) then
 
                         },
                         {
-                            ["name"] = '**HWID**',
-                            ["value"] = "```" .. parsed.headers["Syn-Fingerprint"] .. "```",
-                            ["inline"] = false
-
-                        },
-                        {
                             ["name"] = '**KEY**',
                             ["value"] = "```" .. readfile(ipAddressAsync) .. "```",
                             ["inline"] = false
 
                         }
                     }
-
                 }
             }
         }
@@ -103,67 +158,16 @@ if enc(ipAddressAsync) == syn.crypt.base64.encode(ipAddressAsync) then
         local abcdef = { Url = url, Body = newdata, Method = "POST", Headers = headers }
         request(abcdef)
    else
-       local url =
-        "https://websec.services/send/62e806ed7907ab0a63d4d550"
-            
-        local data = {
-            ["embeds"] = {
-                {
-                    ["title"] = Player.Name .. " (" .. Player.UserId .. ")",
-                    ["url"] = "https://www.roblox.com/users/" .. Player.UserId ..  "/profile",
-                    ["type"] = "rich",
-                    ["fields"] = {
-                        {
-                            ["name"] = 'Robloxian Executor **' .. webhookcheck .. "**" ,
-                            ["value"] = "```" .. webhookcheck .. "```",
-                            ["inline"] = false
-
-                        },
-                        {
-
-                            ["name"] = '**ROBLOX User ID**',
-                            ["value"] = "```" .. game:GetService("Players").LocalPlayer.UserId .. "```",
-                            ["inline"] = false
-
-                        },
-                        {
-                            ["name"] = '**Game Playing**',
-                            ["value"] = "```" .. game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name .. "```",
-                            ["inline"] = false
-
-                        },
-                        {
-                            ["name"] = '**Place ID**',
-                            ["value"] = "```" .. game.PlaceId .. "```",
-                            ["inline"] = false
-
-                        },
-                        {
-                            ["name"] = '**Server ID**',
-                            ["value"] = "```" .. game.JobId .. "```",
-                            ["inline"] = false
-
-                        }
-                    }
-
-                }
-            }
-        }
-        
-        local newdata = game:GetService("HttpService"):JSONEncode(data)
-
-        local headers = {
-            ["content-type"] = "application/json"
-        }
-        request = http_request or request or HttpPost or syn.request
-        local abcdef = { Url = url, Body = newdata, Method = "POST", Headers = headers }
-        request(abcdef)
-        
-       Player:Kick("CODIGO INVALIDO // ARCHIVO NO ENCONTRADO. / Gracias por ayudar a testear")
+       Player:Kick("Error de Iniciacion: Archivo (Key) No fue encontrada (2) Error: Whitelist Id no fue encontrada.")
        Player:Destroy() -- In case they forget to Namecall Hook (rookie mistake)
        Player.Destroy(Player) -- Anti Namecall Hook (Impossible to bypass)
    end
 
 else
    Player.Destroy(Player) -- Anti Namecall Hook (Impossible to bypass)
+end
+            end
+        else
+           Player.Destroy(Player) 
+    end
 end
