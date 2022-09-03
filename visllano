@@ -9,10 +9,15 @@ getgenv().Executed = true
 local AdminPrefix = "!" -- Change this to what you want (i.e: ;kill <namehere>) (if its blank it will error)
 local Players = game:GetService("Players")
 local LocalP = Players.LocalPlayer;
-local vis = Instance.new("ScreenGui")
-local Frame = Instance.new("Frame")
-local Frame_2 = Instance.new("Frame")
 local PlayerGui = LocalP:WaitForChild("PlayerGui")
+
+local Vu = Instance.new("ScreenGui")
+local vil = Instance.new("Frame")
+local user = Instance.new("TextLabel")
+local imageuser = Instance.new("ImageLabel")
+local UICorner = Instance.new("UICorner")
+local smeweirdtext = Instance.new("TextLabel")
+
 getgenv().AdminTable = {
 	["692194040"] = {["Access"] = 5}; -- Access is what level of shit you want the person to have access to
 }
@@ -81,24 +86,58 @@ Players.PlayerAdded:Connect(function(CKP)
 	end)
 end)
 
-vis.Name = "vis"
-vis.Parent = PlayerGui
-vis.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+--Properties:
 
-Frame.Parent = vis
-Frame.AnchorPoint = Vector2.new(0.5, 0.5)
-Frame.BackgroundColor3 = Color3.fromRGB(29, 29, 29)
-Frame.BackgroundTransparency = 0.050
-Frame.BorderSizePixel = 0
-Frame.Position = UDim2.new(0.450375676, 0, 0.430987865, 0)
-Frame.Size = UDim2.new(0, 325, 0, 410)
-Frame.Draggable = true
-Frame.Active = true
+Vu.Name = "Vu"
+Vu.Parent = PlayerGui
+Vu.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
-Frame_2.Parent = Frame
-Frame_2.AnchorPoint = Vector2.new(0.5, 0.5)
-Frame_2.BackgroundColor3 = Color3.fromRGB(33, 33, 33)
-Frame_2.BackgroundTransparency = 0.300
-Frame_2.BorderSizePixel = 0
-Frame_2.Position = UDim2.new(0.5, 0, 0.5, 0)
-Frame_2.Size = UDim2.new(0, 315, 0, 400)
+vil.Name = "vil"
+vil.Parent = Vu
+vil.AnchorPoint = Vector2.new(0.5, 0.5)
+vil.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+vil.BorderColor3 = Color3.fromRGB(27, 42, 53)
+vil.BorderSizePixel = 0
+vil.Position = UDim2.new(0.321526051, 0, 0.49862501, 0)
+vil.Size = UDim2.new(0, 361, 0, 412)
+vil.Draggable = true
+vil.Active = true
+
+user.Name = "user"
+user.Parent = vil
+user.AnchorPoint = Vector2.new(0.5, 0.5)
+user.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+user.BackgroundTransparency = 1.000
+user.Position = UDim2.new(0.5, 0, 0.409658641, 0)
+user.Size = UDim2.new(0, 230, 0, 24)
+user.Font = Enum.Font.Gotham
+user.Text = LocalP.Name
+user.TextColor3 = Color3.fromRGB(255, 255, 255)
+user.TextScaled = true
+user.TextSize = 14.000
+user.TextWrapped = true
+
+imageuser.Name = "imageuser"
+imageuser.Parent = vil
+imageuser.AnchorPoint = Vector2.new(0.5, 0.5)
+imageuser.BackgroundColor3 = Color3.fromRGB(238, 115, 117)
+imageuser.BackgroundTransparency = 1.000
+imageuser.Position = UDim2.new(0.5, 0, 0.224999994, 0)
+imageuser.Size = UDim2.new(0, 100, 0, 100)
+
+UICorner.Parent = imageuser
+
+smeweirdtext.Name = "smeweirdtext"
+smeweirdtext.Parent = vil
+smeweirdtext.AnchorPoint = Vector2.new(0.5, 0.5)
+smeweirdtext.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+smeweirdtext.BackgroundTransparency = 1.000
+smeweirdtext.Position = UDim2.new(0.5, 0, 0.5, 0)
+smeweirdtext.Size = UDim2.new(0, 281, 0, 49)
+smeweirdtext.Font = Enum.Font.Gotham
+smeweirdtext.Text = "Esto es un UI de prueba"
+smeweirdtext.TextColor3 = Color3.fromRGB(255, 255, 255)
+smeweirdtext.TextScaled = true
+smeweirdtext.TextSize = 14.000
+smeweirdtext.TextWrapped = true
+smeweirdtext.TextXAlignment = Enum.TextXAlignment.Left
