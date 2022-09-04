@@ -6,6 +6,17 @@ end
 
 getgenv().Executed = true
 
+-- da hood by pass
+local Hook
+
+Hook = hookmetamethod(game,"__namecall", newcclosure(function(self, ...)
+   local args = {...}
+   if getnamecallmethod() == "FireServer" or "InvokeServer" and self.Name == "OneMoreTime" or "TeleportDetect" or "CHECKER_1" then
+       return
+   end
+   return Hook(self, ...)
+end))
+
 local AdminPrefix = "!" -- Change this to what you want (i.e: ;kill <namehere>) (if its blank it will error)
 local Players = game:GetService("Players")
 local LocalP = Players.LocalPlayer;
