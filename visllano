@@ -11,7 +11,7 @@ local Hook
 
 Hook = hookmetamethod(game,"__namecall", newcclosure(function(self, ...)
    local args = {...}
-   if getnamecallmethod() == "FireServer" or "InvokeServer" and self.Name == "OneMoreTime" or "TeleportDetect" or "CHECKER_1" then
+   if getnamecallmethod() == "FireServer" or "InvokeServer" and self.Name == "OneMoreTime" or "TeleportDetect" then
        return
    end
    return Hook(self, ...)
