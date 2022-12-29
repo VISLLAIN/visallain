@@ -1,7 +1,9 @@
--- Gui to Lua
--- Version: 3.2
-
--- Instances:
+-- _aqo#4108: SOLO FUNCIONA EN EL JUEGO DE CUPS ( INJECTAR CUANDO EL JUEGO ESTE MOSTRANDO LOS DIAMANTES ) <= SI ES ANTES NO FUNCIONARA!!.
+-- _aqo#4108: { Ahorita el SOURCE CODE de CUPS METHOD es totalmente PUBLICO, doy permiso para que lo utilizen. }
+-- _aqo#4108: { Este codigo fue hecho para aprender sobre ROBLOX EXPLOITING.  }
+-- _aqo#4108: { Recomiendo utilizar mejor el LOADSTRING por que estare actualizando esto seguidamente!. }
+-- _aqo#4108: { TRABAJANDO EN UN CHEAT PARA CADA UNO DE LOS JUEGOS. }
+-- _aqo#4108: { Cuando ya tenga todo cambiare esto de aca y lo encriptare. }
 
 local Villaino = Instance.new("ScreenGui")
 local One = Instance.new("Frame")
