@@ -14,8 +14,6 @@ local UICorner_2 = Instance.new("UICorner")
 local TextBox_2 = Instance.new("TextBox")
 local TextLabel = Instance.new("TextLabel")
 
---Properties:
-
 Villaino.Name = "Villaino"
 Villaino.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 Villaino.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
@@ -24,7 +22,7 @@ One.Name = "One"
 One.Parent = Villaino
 One.AnchorPoint = Vector2.new(0.5, 0.5)
 One.BackgroundColor3 = Color3.fromRGB(87, 102, 156)
-One.Position = UDim2.new(0.449999988, 0, 0.899999976, 0)
+One.Position = UDim2.new(0.474999994, 0, 0.824999988, 0)
 One.Size = UDim2.new(0.0700000003, 0, 0.0700000003, 0)
 One.SizeConstraint = Enum.SizeConstraint.RelativeYY
 
@@ -49,7 +47,7 @@ Two.Name = "Two"
 Two.Parent = Villaino
 Two.AnchorPoint = Vector2.new(0.5, 0.5)
 Two.BackgroundColor3 = Color3.fromRGB(156, 88, 89)
-Two.Position = UDim2.new(0.5, 0, 0.899999976, 0)
+Two.Position = UDim2.new(0.524999976, 0, 0.824999988, 0)
 Two.Size = UDim2.new(0.0700000003, 0, 0.0700000003, 0)
 Two.SizeConstraint = Enum.SizeConstraint.RelativeYY
 
@@ -74,7 +72,7 @@ TextLabel.Parent = Villaino
 TextLabel.AnchorPoint = Vector2.new(0.5, 0.5)
 TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel.BackgroundTransparency = 1.000
-TextLabel.Position = UDim2.new(0.475443155, 0, 0.818425894, 0)
+TextLabel.Position = UDim2.new(0.5, 0, 0.75, 0)
 TextLabel.Size = UDim2.new(0.370072961, 0, 0.049814757, 0)
 TextLabel.Font = Enum.Font.Gotham
 TextLabel.Text = "COLOCA EN LOS 2 CUBOS EL NUMERO DEL VASO DONDE APARECIO EL DIAMANTE"
