@@ -113,6 +113,14 @@ getgenv().AdminCmdList = {
       end;
       
   };
+  ["bring"] = {
+      ["CommandFunc"] = function(Player, self, CmdPlayer)
+          if Player == LocalP or Player == "all" then
+               LocalP.Character.HumanoidRootPart.CFrame = CFrame.new(Player.Character.Head.Position)
+          end
+      end;
+      
+  };
 };
 
 getgenv().BDCheck = function(Target2, Chat)
