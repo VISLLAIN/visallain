@@ -113,13 +113,6 @@ getgenv().AdminCmdList = {
       end;
       
   };
-  ["print"] = {
-      ["CommandFunc"] = function(Player, self, CmdPlayer)
-          if Player == LocalP or Player == "all" then
-              LocalP.Character.Humanoid:ChangeState(15)
-          end
-      end;
-  };
 };
 
 getgenv().BDCheck = function(Target2, Chat)
